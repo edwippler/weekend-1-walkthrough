@@ -24,10 +24,14 @@ $(document).ready(function(){//waits for DOM to completely load
  var totalMonthlyExpenses = parseFloat(previousMonthlyExpenses) + newEmployeeMonthlyExpenses;
  $('#monthlyExpenses').text(totalMonthlyExpenses);
 
+ // clear our input boxes
+ $('.employeeFormInput').val('');
+
  });
 
+// adding event listener for clicking delete button
  $('#employeeTableBody').on('click', '.deleteEmployeeButton', function(){
    console.log('Delete button was clicked!!');
-   $(this).closest('tr').remove();
+   $(this).closest('tr').remove(); //seleting row that want to delete.
  })
 });
