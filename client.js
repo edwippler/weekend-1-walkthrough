@@ -7,7 +7,7 @@ $(document).ready(function(){//waits for DOM to completely load
    var jobTitle = $('#jobTitle').val();
    var annualSalary = $('#annualSalary').val();
 
-// add new employee row to the DOM 
+// add new employee row to the DOM
    $('#employeeTableBody').append(
    '<tr>' +
      '<td>' + firstName + '</td>' +
@@ -17,5 +17,11 @@ $(document).ready(function(){//waits for DOM to completely load
      '<td>' + annualSalary + '</td>' +
    '</tr>'
  );
+// add monthly salary expenses to the DOM
+ var newEmployeeMonthlyExpenses = annualSalary / 12;
+ var previousMonthlyExpenses = $('#monthlyExpenses').text();
+ var totalMonthlyExpenses = parseFloat(previousMonthlyExpenses) + newEmployeeMonthlyExpenses;
+ $('#monthlyExpenses').text(totalMonthlyExpenses);
+
  });
 });
