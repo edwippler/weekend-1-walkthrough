@@ -31,7 +31,14 @@ $(document).ready(function(){//waits for DOM to completely load
 
 // adding event listener for clicking delete button
  $('#employeeTableBody').on('click', '.deleteEmployeeButton', function(){
-   console.log('Delete button was clicked!!');
-   $(this).closest('tr').remove(); //seleting row that want to delete.
+   //removing employee salary from total.
+   var deletedEmployeeSalary = $(this).parent().prev().text();
+   var deletedEmployeeMonthlySalary = deletedEmployeeSalary / 12
+   var previousMonthlyExpenses = $('#monthlyExpenses').text();
+   var updatedMonthlyExpenses = previousMonthlyExpenses - deletedEmployeeMonthlySalary; //does not need parseFloat because of type coercion. 
+   $('#monthlyExpenses').text(updatedMonthlyExpenses);
+  //  seleting and deleting employee row from table.
+   $(this).closest('tr').remove();
+
  })
 });
