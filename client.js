@@ -15,7 +15,7 @@ $(document).ready(function(){//waits for DOM to completely load
      '<td>' + idNumber + '</td>' +
      '<td>' + jobTitle + '</td>' +
      '<td>' + annualSalary + '</td>' +
-     '<td><button class="deleteEmployeeButton">Delete '+ firstName + '</button></td>' +
+     '<td><button class="deleteEmployeeButton" data-salary="' + annualSalary + '">Delete '+ firstName + '</button></td>' +
    '</tr>'
  );
 // add monthly salary expenses to the DOM
@@ -32,10 +32,10 @@ $(document).ready(function(){//waits for DOM to completely load
 // adding event listener for clicking delete button
  $('#employeeTableBody').on('click', '.deleteEmployeeButton', function(){
    //removing employee salary from total.
-   var deletedEmployeeSalary = $(this).parent().prev().text();
+   var deletedEmployeeSalary = $(this).data('salary');
    var deletedEmployeeMonthlySalary = deletedEmployeeSalary / 12
    var previousMonthlyExpenses = $('#monthlyExpenses').text();
-   var updatedMonthlyExpenses = previousMonthlyExpenses - deletedEmployeeMonthlySalary; //does not need parseFloat because of type coercion. 
+   var updatedMonthlyExpenses = previousMonthlyExpenses - deletedEmployeeMonthlySalary; //does not need parseFloat because of type coercion.
    $('#monthlyExpenses').text(updatedMonthlyExpenses);
   //  seleting and deleting employee row from table.
    $(this).closest('tr').remove();
